@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-
 const StyledNav = styled.header`
   display: flex;
   justify-content: center;
@@ -12,8 +11,16 @@ const StyledNav = styled.header`
     margin: 0 2rem;
     text-decoration: none;
     color: gray;
-    &.active{
+    &.active {
       color: #ec36cf;
+    }
+  }
+  img {
+    height: 100%;
+    transition: ease-in-out 1s;
+    border-radius: 40px;
+    &:hover {
+      transform: rotate(360deg);
     }
   }
 `;
@@ -21,7 +28,10 @@ const StyledNav = styled.header`
 export default function Header() {
   return (
     <StyledNav>
-      <NavLink exact to="/">Home</NavLink>
+      <img src="package.jpg"></img>
+      <NavLink exact to="/">
+        Home
+      </NavLink>
       <NavLink to="/characters">Characters</NavLink>
       <NavLink to="/search">Search</NavLink>
     </StyledNav>

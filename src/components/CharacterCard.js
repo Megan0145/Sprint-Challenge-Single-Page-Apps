@@ -20,10 +20,10 @@ const StyledCard = styled.div`
   .characterDetails {
     width: 80%;
     text-align: center;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
   }
-  h3 { 
-    font-family: 'Turret Road';
+  h3 {
+    font-family: "Turret Road";
     font-size: 1.8rem;
   }
   span {
@@ -38,11 +38,26 @@ export default function CharacterCard(props) {
       <img src={image}></img>
       <div className="characterDetails">
         <h3>{name}</h3>
-        <p><span>Status: </span>{status}</p>
-        <p><span>Species: </span>{species}</p>
-        <p><span>Gender: </span>{gender}</p>
-        <p><span>Location: </span>{location}</p>
-        <p><span>Origin: </span>{origin}</p>
+        <p>
+          <span>Status: </span>
+          {status}
+        </p>
+        <p>
+          <span>Species: </span>
+          {species}
+        </p>
+        <p>
+          <span>Gender: </span>
+          {gender}
+        </p>
+        <p>
+          <span>Location: </span>
+          {location}
+        </p>
+        <p>
+          <span>Origin: </span>
+          {origin}
+        </p>
       </div>
     </StyledCard>
   );
