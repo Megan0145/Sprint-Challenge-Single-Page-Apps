@@ -3,30 +3,32 @@ import styled from "styled-components";
 
 const StyledWelcomePage = styled.div`
   width: 100vw;
-  background-color: black;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  background: black;
+justify-content: space-between;
   h1 {
-    color: white;
-    font-family: "Luckiest Guy", cursive;
+    font-size: 4rem;
+    font-family: 'Get Schwifty';
+    color: mediumturquoise;
+    text-shadow: 4px 4px 3px green;
     padding-top: 3rem;
   }
   img {
-    width: 80vw;
-    margin-top: 30vh;
+    width: 70vw;
+    margin-bottom: 0;
   }
 `;
 
 export default function WelcomePage() {
   return (
     <StyledWelcomePage>
-      <header>
+
         <h1>Welcome to the ultimate fan site!</h1>
         <img className="main-img" src="Rick-and-Morty-Welcome.jpg" alt="rick" />
-      </header>
+
     </StyledWelcomePage>
   );
 }

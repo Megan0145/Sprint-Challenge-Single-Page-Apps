@@ -6,7 +6,7 @@ import styled from "styled-components";
 const StyledNav = styled.header`
   display: flex;
   justify-content: center;
-  height: 3rem;
+  height: 10vh;
   align-items: center;
   a {
     margin: 0 2rem;
