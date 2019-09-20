@@ -21,7 +21,7 @@ const StyledNav = styled.header`
 export default function Header() {
   return (
     <StyledNav>
-      <NavLink to="/">Home</NavLink>
+      <NavLink exact to="/">Home</NavLink>
       <NavLink to="/characters">Characters</NavLink>
       <NavLink to="/search">Search</NavLink>
     </StyledNav>

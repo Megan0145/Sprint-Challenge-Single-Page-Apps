@@ -8,12 +8,12 @@ const StyledWelcomePage = styled.div`
   flex-direction: column;
   align-items: center;
   background: black;
-justify-content: space-between;
+  justify-content: space-between;
   h1 {
     font-size: 4rem;
-    font-family: 'Get Schwifty';
+    font-family: "Get Schwifty";
     color: mediumturquoise;
-    text-shadow: 4px 4px 3px green;
+    text-shadow: 4px 4px 3px greenyellow;
     padding-top: 3rem;
   }
   img {
@@ -25,10 +25,8 @@ justify-content: space-between;
 export default function WelcomePage() {
   return (
     <StyledWelcomePage>
-
-        <h1>Welcome to the ultimate fan site!</h1>
-        <img className="main-img" src="Rick-and-Morty-Welcome.jpg" alt="rick" />
-
+      <h1>Welcome to the ultimate fan site!</h1>
+      <img className="main-img" src="Rick-and-Morty-Welcome.jpg" alt="rick" />
     </StyledWelcomePage>
   );
 }

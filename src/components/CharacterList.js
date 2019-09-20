@@ -4,15 +4,11 @@ import CharacterCard from './CharacterCard';
 import styled from 'styled-components';
 
 const StyledCharacterList= styled.section`
-
-  width: 85vw;
-  min-height: 80vh;
-  max-width: 1024px;
-  margin: 35px auto;
-  background: #fff;
-  padding: 15px;
+  background-color: black;
+  width: 100vw; 
   display:flex;
-  flex-direction: column;
+  flex-wrap:wrap;
+  justify-content: space-evenly;
   align-items: center;
 `;
 
