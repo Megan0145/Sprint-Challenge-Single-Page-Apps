@@ -1,6 +1,21 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CharacterCard from './CharacterCard';
+import styled from 'styled-components';
+
+const StyledCharacterList= styled.section`
+
+  width: 85vw;
+  min-height: 80vh;
+  max-width: 1024px;
+  margin: 35px auto;
+  background: #fff;
+  padding: 15px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 
 export default function CharacterList() {
@@ -14,7 +29,6 @@ export default function CharacterList() {
     axios
       .get(API)
       .then(response => {
-        debugger
         setCharacterList(response.data.results);
       })
       .catch(error => {
@@ -23,7 +37,7 @@ export default function CharacterList() {
   }, []);
 
   return (
-    <section className="character-list">
+    <StyledCharacterList>
       {
         characterList.map(character => {
           
@@ -36,6 +50,6 @@ export default function CharacterList() {
           />
         })
       }
-    </section>
+    </StyledCharacterList>
   );
 }
