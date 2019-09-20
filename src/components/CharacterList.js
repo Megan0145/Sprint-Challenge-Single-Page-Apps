@@ -23,7 +23,6 @@ export default function CharacterList() {
 
   return (
     <section className="character-list">
-      <h2>TODO: `array.map()` over your state here!</h2>
       {
         characterList.map(character => {
           return <CharacterCard 
@@ -31,6 +30,7 @@ export default function CharacterList() {
             name={character.name}
             status={character.status}
             species={character.species}
+            image={character.image}
           />
         })
       }
