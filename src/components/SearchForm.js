@@ -1,24 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import CharacterList from "./CharacterList";
+import CharacterCard from "./CharacterCard";
 
-export default function SearchForm() {
-  const [searchValue, setSearchValue] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
-  const searchAPI = "https://rickandmortyapi.com/api/character/?name=";
-  const onInputChange = e => {
-    setSearchValue(e.target.value);
-  };
-  const callSearchFunction = e => {
-    e.preventDefault();
+export default function SearchForm(props) {
+  const [characterList, setCharacterList] = useState([]);
+  const API = "https://rickandmortyapi.com/api/character/";
+
+  useEffect(() => {
     axios
-      .get(searchAPI + searchValue)
+      .get(API)
       .then(response => {
-        console.log(response);
-        setSearchResult(searchResult.concat(response.data.results));
+        setCharacterList(response.data.results);
       })
       .catch(error => {
         console.log(error);
       });
+  }, characterList);
+
+  const [searchValue, setSearchValue] = useState("");
+  const onInputChange = e => {
+    setSearchValue(e.target.value);
+  };
+
+  const callSearchFunction = e => {
+    e.preventDefault();
+    setCharacterList(
+      characterList.filter(character =>
+        character.name.toUpperCase().includes(searchValue.toUpperCase())
+      )
+    );
   };
 
   return (
@@ -35,8 +46,15 @@ export default function SearchForm() {
         <button onClick={callSearchFunction}>Search</button>
       </form>
       <div>
-        {searchResult.map(result => {
-          return <h1>{result.name}</h1>;
+        {characterList.map(character => {
+          return (
+            <CharacterCard
+              name={character.name}
+              status={character.status}
+              species={character.species}
+              image={character.image}
+            />
+          );
         })}
       </div>
     </section>

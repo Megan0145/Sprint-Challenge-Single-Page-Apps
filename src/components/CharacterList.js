@@ -37,7 +37,7 @@ export default function CharacterList() {
   }, []);
 
   return (
-    <StyledCharacterList>
+    <StyledCharacterList characterList={characterList}>
       {
         characterList.map(character => {
           
