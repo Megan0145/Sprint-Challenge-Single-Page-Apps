@@ -29,6 +29,8 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 > Answer:
 
+All data for website or application is loaded on the first request. JavaScript is then used to manage routing. This means that initial loading time may be slightly longer but routing between views is faster as opposed to server-side routing because you don't have to wait for the server to respond with content.
+
 ## Project Set Up
 
 Follow these steps to set up and work on your project:
