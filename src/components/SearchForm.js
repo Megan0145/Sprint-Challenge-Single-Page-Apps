@@ -1,25 +1,25 @@
 import React, { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 
 export default function SearchForm() {
   const [searchValue, setSearchValue] = useState("");
   const [searchResult, setSearchResult] = useState([]);
-  const searchAPI = 'https://rickandmortyapi.com/api/character/?name=';
-  const onInputChange = (e) => {
+  const searchAPI = "https://rickandmortyapi.com/api/character/?name=";
+  const onInputChange = e => {
     setSearchValue(e.target.value);
-  }
-  const callSearchFunction = (e) => {
+  };
+  const callSearchFunction = e => {
     e.preventDefault();
     axios
-      .get(searchAPI+searchValue)
+      .get(searchAPI + searchValue)
       .then(response => {
-        console.log(response)
-        setSearchResult(searchResult.concat(response.data.results))
+        console.log(response);
+        setSearchResult(searchResult.concat(response.data.results));
       })
       .catch(error => {
-       console.log(error)
+        console.log(error);
       });
-  }
+  };
 
   return (
     <section className="search-form">
@@ -35,13 +35,10 @@ export default function SearchForm() {
         <button onClick={callSearchFunction}>Search</button>
       </form>
       <div>
-      {searchResult.map(result => {
-        return <h1>{result.name}</h1>
-      })}
+        {searchResult.map(result => {
+          return <h1>{result.name}</h1>;
+        })}
       </div>
     </section>
-    
-
-   
   );
 }
