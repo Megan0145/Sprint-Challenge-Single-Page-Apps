@@ -8,12 +8,14 @@ import SearchForm from './components/SearchForm';
 export default function App() {
   return (
     <main>
-      <Header />
+      
       <div>
-          <Route exact path='/' component={WelcomePage} />
-          <Route path='/characters' component={CharacterList} />
-          <Route path='/search' component={SearchForm} />
+        <Header />
       </div>
+          <Route exact path='/' component={WelcomePage} />
+          <Route  path='/characters' component={CharacterList} />
+          <Route  path='/search' component={SearchForm} />
+        
     </main>
   );
 }

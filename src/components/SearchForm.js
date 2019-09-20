@@ -1,5 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import CharacterCard from './CharacterCard';
+import styled from 'styled-components';
+
+const StyledSearchList = styled.section`
+  width: 85vw;
+  min-height: 80vh;
+  max-width: 1024px;
+  margin: 35px auto;
+  background: #fff;
+  padding: 15px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 
 export default function SearchForm() {
   const [searchValue, setSearchValue] = useState("");
@@ -14,15 +29,15 @@ export default function SearchForm() {
       .get(searchAPI + searchValue)
       .then(response => {
         console.log(response);
-        setSearchResult(searchResult.concat(response.data.results));
+        setSearchResult(response.data.results);
       })
       .catch(error => {
         console.log(error);
       });
+      setSearchValue('');
   };
-
   return (
-    <section className="search-form">
+    <div>
       <form>
         <label htmlFor="name">Search by name: </label>
         <input
@@ -34,11 +49,20 @@ export default function SearchForm() {
         />
         <button onClick={callSearchFunction}>Search</button>
       </form>
-      <div>
+     
+      <StyledSearchList>
         {searchResult.map(result => {
-          return <h1>{result.name}</h1>;
+          return <CharacterCard 
+          name={result.name}
+          status={result.status}
+          species={result.species}
+          image={result.image}
+          gender={result.gender}
+          location={result.location.name}
+          origin={result.origin.name}
+          />;
         })}
-      </div>
-    </section>
+      </StyledSearchList>
+    </div>
   );
 }

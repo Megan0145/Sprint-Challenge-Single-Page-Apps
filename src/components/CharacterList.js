@@ -11,7 +11,6 @@ const StyledCharacterList= styled.section`
   margin: 35px auto;
   background: #fff;
   padding: 15px;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   display:flex;
   flex-direction: column;
   align-items: center;
@@ -30,6 +29,7 @@ export default function CharacterList() {
       .get(API)
       .then(response => {
         setCharacterList(response.data.results);
+        console.log(response.data)
       })
       .catch(error => {
        console.log(error)
@@ -47,6 +47,10 @@ export default function CharacterList() {
             status={character.status}
             species={character.species}
             image={character.image}
+            gender={character.gender}
+            location={character.location.name}
+            origin={character.origin.name}
+            url={character.url}
           />
         })
       }
