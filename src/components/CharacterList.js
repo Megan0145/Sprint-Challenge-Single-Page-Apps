@@ -15,39 +15,52 @@ const StyledCharacterList = styled.section`
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
   const [characterList, setCharacterList] = useState([]);
-  const API = "https://rickandmortyapi.com/api/character/";
+  const [API, setAPI] = useState("https://rickandmortyapi.com/api/character/");
+  const [nextAPI, setNextAPI] = useState("");
+  const [prevAPI, setPrevAPI] = useState("");
+  const nextPage = e => {
+    setAPI(nextAPI);
+  };
+  const prevPage = e => {
+    setAPI(prevAPI);
+  };
 
   useEffect(() => {
-    // TODO: Add API Request here - must run in `useEffect`
-    //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
     axios
       .get(API)
       .then(response => {
         setCharacterList(response.data.results);
-        console.log(response.data);
+        setNextAPI(response.data.info.next);
+        setPrevAPI(response.data.info.prev);
       })
       .catch(error => {
         console.log(error);
       });
-  }, []);
+  }, [API]);
 
   return (
-    <StyledCharacterList>
-      {characterList.map(character => {
-        return (
-          <CharacterCard
-            key={character.id}
-            name={character.name}
-            status={character.status}
-            species={character.species}
-            image={character.image}
-            gender={character.gender}
-            location={character.location.name}
-            origin={character.origin.name}
-            url={character.url}
-          />
-        );
-      })}
-    </StyledCharacterList>
+    <div>
+      <div className="pagination">
+        <button onClick={prevPage}>Previous</button>
+        <button onClick={nextPage}>Next</button>
+      </div>
+      <StyledCharacterList>
+        {characterList.map(character => {
+          return (
+            <CharacterCard
+              key={character.id}
+              name={character.name}
+              status={character.status}
+              species={character.species}
+              image={character.image}
+              gender={character.gender}
+              location={character.location.name}
+              origin={character.origin.name}
+              url={character.url}
+            />
+          );
+        })}
+      </StyledCharacterList>
+    </div>
   );
 }
