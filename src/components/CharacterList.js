@@ -11,6 +11,22 @@ const StyledCharacterList = styled.section`
   justify-content: space-evenly;
   align-items: center;
 `;
+const StyledPagination = styled.div`
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  button {
+    margin: 0 2rem;
+    padding: 1rem;
+    width: 5rem;
+    background-color: black;
+    color: white;
+    border: 5px solid;
+    border-image-source: linear-gradient(45deg, #006100, #f074cf);
+    border-image-slice: 1;
+  }
+`;
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
@@ -59,10 +75,10 @@ export default function CharacterList() {
           );
         })}
       </StyledCharacterList>
-      <div className="pagination">
-        <button onClick={prevPage}>Previous</button>
+      <StyledPagination>
+        <button onClick={prevPage}>Prev</button>
         <button onClick={nextPage}>Next</button>
-      </div>
+      </StyledPagination>
     </div>
   );
 }
