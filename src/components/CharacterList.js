@@ -20,9 +20,11 @@ export default function CharacterList() {
   const [prevAPI, setPrevAPI] = useState("");
   const nextPage = e => {
     setAPI(nextAPI);
+    document.documentElement.scrollTop = 0;
   };
   const prevPage = e => {
     setAPI(prevAPI);
+    document.documentElement.scrollTop = 0;
   };
 
   useEffect(() => {
@@ -40,10 +42,6 @@ export default function CharacterList() {
 
   return (
     <div>
-      <div className="pagination">
-        <button onClick={prevPage}>Previous</button>
-        <button onClick={nextPage}>Next</button>
-      </div>
       <StyledCharacterList>
         {characterList.map(character => {
           return (
@@ -61,6 +59,10 @@ export default function CharacterList() {
           );
         })}
       </StyledCharacterList>
+      <div className="pagination">
+        <button onClick={prevPage}>Previous</button>
+        <button onClick={nextPage}>Next</button>
+      </div>
     </div>
   );
 }
